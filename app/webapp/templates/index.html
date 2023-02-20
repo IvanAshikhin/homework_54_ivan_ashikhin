@@ -7,30 +7,49 @@
     <title>Title</title>
 </head>
 <body>
-<nav class="navbar">
-    <div class="container">
-        <p class="logo">My Market</p>
-        <ul class="menu">
-            <li><a href="{% url 'index_page' %}">Products</a></li>
-            <li><a href="{% url 'product_add' %}">Add Product</a></li>
-            <li><a href="{% url 'category_add' %}">Add Category</a></li>
-        </ul>
-    </div>
-</nav>
-{% for product in products %}
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ product.image }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.product_name }}</h5>
-                    <p class="card-text">{{ product.category }}</p>
-                    <p class="card-text">{{ product.cost }}</p>
-                    <a href="{% url 'details' product.pk %}" class="more">See more</a>
-                </div>
-            </div>
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">My Market</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index_page' %}">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'product_add' %}">Add Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'category_add' %}">Add Category</a>
+                </li>
+            </ul>
         </div>
     </div>
-{% endfor %}
+</nav>
+
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in products %}
+            <div class="col">
+                <div class="card h-100" style="height: 200px;width: 300px">
+                    <img src="{{ product.image }}" class="card-img-top" style="width: 295px; height: 150px" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.product_name }}</h5>
+                        <p class="card-text">{{ product.category }}</p>
+                        <p class="card-text">{{ product.cost }}</p>
+                        <a href="{% url 'details' product.pk %}" class="btn btn-dark">See more</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-+wyJ/cgT+06Qw6UzFDsJkCxRYf9pZlVJ6BCtn14p3Hq3ijimyMz+udGrrRJk09QH"
+        crossorigin="anonymous"></script>
 </body>
 </html>

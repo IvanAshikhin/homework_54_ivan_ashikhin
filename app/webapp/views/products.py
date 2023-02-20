@@ -1,12 +1,12 @@
-from django.http import request
 from django.shortcuts import render, redirect, get_object_or_404
 
 from webapp.models import Product
+
 from webapp.models import Category
 
 
 def detail_view(request, pk):
-    product = get_object_or_404(Product,pk=pk)
+    product = get_object_or_404(Product, pk=pk)
     context = {'product': product}
     return render(request, 'detail.html', context=context)
 
@@ -21,6 +21,7 @@ def category_add_view(request):
     Category.objects.create(**category_data)
     return redirect('index_page')
 
+
 def product_add_view(request):
     if request.method == "GET":
         categories = Category.objects.all()
@@ -33,4 +34,3 @@ def product_add_view(request):
     }
     Product.objects.create(**product_data)
     return redirect('index_page')
-
