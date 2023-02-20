@@ -6,12 +6,13 @@
 </head>
 <body>
 <h1 class="add_category">Add Category</h1>
-<form method="POST" action="/product/category_add_view/">
+<form method="POST" action="{% url "category_add" %}">
     {% csrf_token %}
     <label for="category_name">Title:</label>
     <input type="text" id="category_name" name="category_name"><br>
     <label for="category_description">Description:</label>
     <input type="text" id="category_description" name="category_description"><br>
+    <input type="submit" value="Submit">
 </form>
 </body>
 </html>
