@@ -14,8 +14,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'product_name', 'category', 'add_date', 'cost', 'image')
-    list_filter = ('id', 'product_name', 'category', 'add_date', 'cost', 'image')
+    list_display = ('id', 'product_name', 'category', 'add_date', 'cost', 'image', 'description')
+    list_filter = ('id', 'product_name', 'category', 'add_date', 'cost', 'image', 'description')
     search_fields = ('id', 'product_name', 'category')
     fields = ('product_name', 'category', 'add_date', 'cost')
     readonly_fields = ('id', 'image', 'add_date')

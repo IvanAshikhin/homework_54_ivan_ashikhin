@@ -30,7 +30,8 @@ def product_add_view(request):
         'product_name': request.POST.get('product_name'),
         'cost': request.POST.get('cost'),
         'image': request.POST.get('image'),
-        'category_id': int(request.POST.get('category_id'))
+        'category_id': int(request.POST.get('category_id')),
+        'description': request.POST.get('description')
     }
     Product.objects.create(**product_data)
     return redirect('index_page')

@@ -23,6 +23,7 @@ class Product(models.Model):
     add_date = models.DateTimeField(auto_now=True,verbose_name='Дата добавления')
     cost = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     image = models.TextField(max_length=10000,null=False,blank=False,verbose_name='Ссылка изображения')
+    description = models.TextField(max_length=10000, null=True, verbose_name='Описание')
 
 
     def __str__(self):
