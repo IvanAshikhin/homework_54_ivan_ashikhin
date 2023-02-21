@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 
 from webapp.models import Product
 
@@ -33,5 +34,5 @@ def product_add_view(request):
         'category_id': int(request.POST.get('category_id')),
         'description': request.POST.get('description')
     }
-    Product.objects.create(**product_data)
-    return redirect('index_page')
+    product = Product.objects.create(**product_data)
+    return redirect(reverse("details", kwargs={'pk': product.pk}))
