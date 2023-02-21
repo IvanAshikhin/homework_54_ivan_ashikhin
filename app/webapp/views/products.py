@@ -36,3 +36,24 @@ def product_add_view(request):
     }
     product = Product.objects.create(**product_data)
     return redirect(reverse("details", kwargs={'pk': product.pk}))
+
+
+def category_view(request):
+    categories = Category.objects.all()
+    return render(request, 'category_view.html', context={"categories": categories})
+
+
+def category_delete_view(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    category.delete()
+    return redirect('index_page')
+
+def category_edit_view(request, pk):
+    category = get_object_or_404(Category,pk=pk)
+    if request.method == "GET":
+        return render(request,'update_view.html',context={'category': category})
+    category.category_name = request.POST.get('category_name')
+    category.category_description = request.POST.get('category_description')
+    category.save()
+    return redirect('index_page')
+
